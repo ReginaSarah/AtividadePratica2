@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Hash.h"
 
 #include "Hash.h"
@@ -7,6 +8,8 @@
 
 #define DIVISAO 0
 #define MULTIPLICACAO 1
+using namespace std;
+
 
 
 Hash::Hash(int tamanho)
@@ -18,7 +21,7 @@ Hash::Hash(int tamanho)
 
 Hash::~Hash()
 {
-    //dtor
+    cout << "entre aqui caralho" << endl;
 }
 
 int Hash::getTamanho()
@@ -37,6 +40,7 @@ No Hash::insere(int chave, int data)
     int indice = hashFunction(chave, m);
     if(tabela[indice].busca(data))
     {
+        numColisoes++;
         return *tabela[indice].get(indice).getProx();
     }
 
@@ -58,9 +62,9 @@ No Hash::lookup(int chave, int data)
 
 void Hash::destroy()
 {
-    for(int i = 0; i < m; i++)
+    /*for(int i = 0; i < m; i++)
     {
         tabela[i].~lista();
-    }
+    }*/
 }
 

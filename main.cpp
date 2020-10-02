@@ -12,10 +12,34 @@ void CriandoChavesAleatorios(int Vetor[], int n){
     }
 }
 
+void imprime(int Vetor[], int n)
+{
+    cout << "Vetor" << endl;
+    for(int i = 0; i < n; i++)
+    {
+        cout << Vetor[i] << endl;
+    }
+    cout << endl;
+}
+
 int main(int arc, char* argv[])
 {
 	int tam = 5;
 	Divisao *tabelaDiv;
 	tabelaDiv->create(tam);
+
+    No auxInsere;
+    for(int i = 0; i < tam; i++)
+    {
+        int Chaves[tam], Data[tam];
+        CriandoChavesAleatorios(Chaves, tam);
+        CriandoChavesAleatorios(Data, tam);
+
+        imprime(Chaves, tam);
+        imprime(Data, tam);
+
+        auxInsere = tabelaDiv->insere(Chaves[i], Data[i]);
+        cout << tabelaDiv->numColisoes << endl;
+    }
 
 }

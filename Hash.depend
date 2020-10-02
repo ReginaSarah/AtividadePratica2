@@ -32,3 +32,44 @@
 
 1601677642 c:\users\rsara\onedrive\documentos\hash\include\multiplicacao.h
 
+1601677580 source:c:\users\rsara\onedrive\documentos\ap2\atividadepratica2\src\divisao.cpp
+	"Hash.h"
+	"Divisao.h"
+
+1601681499 c:\users\rsara\onedrive\documentos\ap2\atividadepratica2\include\hash.h
+	"No.h"
+	"lista.h"
+
+1601677812 c:\users\rsara\onedrive\documentos\ap2\atividadepratica2\include\no.h
+
+1601677731 c:\users\rsara\onedrive\documentos\ap2\atividadepratica2\include\lista.h
+	"No.h"
+
+1601677580 c:\users\rsara\onedrive\documentos\ap2\atividadepratica2\include\divisao.h
+
+1601681849 source:c:\users\rsara\onedrive\documentos\ap2\atividadepratica2\src\hash.cpp
+	<iostream>
+	"Hash.h"
+	"Hash.h"
+	<math.h>
+	"lista.h"
+
+1601677531 source:c:\users\rsara\onedrive\documentos\ap2\atividadepratica2\src\lista.cpp
+	<iostream>
+	<cstdlib>
+	"lista.h"
+
+1601677619 source:c:\users\rsara\onedrive\documentos\ap2\atividadepratica2\src\multiplicacao.cpp
+	"Hash.h"
+	"Multiplicacao.h"
+	<math.h>
+
+1601677642 c:\users\rsara\onedrive\documentos\ap2\atividadepratica2\include\multiplicacao.h
+
+1601681343 source:c:\users\rsara\onedrive\documentos\ap2\atividadepratica2\main.cpp
+	<iostream>
+	"time.h"
+	"Hash.h"
+	"Divisao.h"
+	"Multiplicacao.h"
+

@@ -20,6 +20,8 @@ class Hash
         No lookup(int chave, int data);
         void destroy();
 
+        int numColisoes = 0;
+
     private:
         lista tabela[];
         int m;

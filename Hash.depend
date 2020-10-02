@@ -1,0 +1,34 @@
+# depslib dependency file v1.0
+1601677580 source:c:\users\rsara\onedrive\documentos\hash\src\divisao.cpp
+	"Hash.h"
+	"Divisao.h"
+
+1601677701 c:\users\rsara\onedrive\documentos\hash\include\hash.h
+	"No.h"
+	"lista.h"
+
+1601677812 c:\users\rsara\onedrive\documentos\hash\include\no.h
+
+1601677731 c:\users\rsara\onedrive\documentos\hash\include\lista.h
+	"No.h"
+
+1601677580 c:\users\rsara\onedrive\documentos\hash\include\divisao.h
+
+1601677531 source:c:\users\rsara\onedrive\documentos\hash\src\hash.cpp
+	"Hash.h"
+	"Hash.h"
+	<math.h>
+	"lista.h"
+
+1601677531 source:c:\users\rsara\onedrive\documentos\hash\src\lista.cpp
+	<iostream>
+	<cstdlib>
+	"lista.h"
+
+1601677619 source:c:\users\rsara\onedrive\documentos\hash\src\multiplicacao.cpp
+	"Hash.h"
+	"Multiplicacao.h"
+	<math.h>
+
+1601677642 c:\users\rsara\onedrive\documentos\hash\include\multiplicacao.h
+

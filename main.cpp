@@ -1,17 +1,11 @@
 #include <iostream>
 #include "time.h"
-#include "Hash.h"
-#include "lista.h"
-#include "Divisao.h"
-#include "Multiplicacao.h"
+#include "include/Hash.h"
+#include "include/lista.h"
+#include "include/Divisao.h"
+#include "include/Multiplicacao.h"
+#include <vector>
 using namespace std;
-
-void CriandoChavesAleatorios(int Vetor[], int n){
-    srand(time(NULL));
-    for(int i = 0; i< n; i++){
-        Vetor[i] = rand() % 100;
-    }
-}
 
 void imprime(int Vetor[], int n)
 {
@@ -26,23 +20,10 @@ void imprime(int Vetor[], int n)
 int main(int arc, char* argv[])
 {
 	int tam = 2;
-	Divisao *tabelaDiv;
-	lista tabela[tam] = tabelaDiv->create(tam);
+  
+  Hash *tabelaDiv;
+  
+  tabelaDiv->create(tam);
 
-    No auxInsere;
-    for(int i = 0; i < tam; i++)
-    {
-        int Chaves[tam], Data[tam];
-        CriandoChavesAleatorios(Chaves, tam);
-        CriandoChavesAleatorios(Data, tam);
-
-        imprime(Chaves, tam);
-        imprime(Data, tam);
-
-        auxInsere = tabelaDiv->insere(Chaves[i], Data[i]);
-        cout << tabelaDiv->numColisoes << endl;
-    }
-
-    tabela[tam].~lista();
 
 }

@@ -1,8 +1,9 @@
-#include "Hash.h"
-#include "Divisao.h"
+#include "../include/Hash.h"
+#include "../include/Divisao.h"
 
-
-Divisao::hashFunction(int chave, int m)
+/*
+int Divisao::hashFunction(int chave, int m)
 {
     return chave % m;
 }
+*/

@@ -1,9 +1,8 @@
 #include <iostream>
-#include "Hash.h"
-
-#include "Hash.h"
+#include <time.h>
+#include "../include/Hash.h"
 #include <math.h>
-#include "lista.h"
+#include "../include/lista.h"
 
 
 #define DIVISAO 0
@@ -16,48 +15,68 @@ Hash::Hash(int tamanho)
 {
     //ctor
     this->m = tamanho;
-    this->tabela[tamanho];
-    for(int i = 0; i < tamanho; i++)
-    {
-        this->tabela[i] = new lista();
-    }
-
-}
+  }
 
 Hash::~Hash()
 {
-    cout << "entre aqui caralho" << endl;
+
 }
 
 int Hash::getTamanho()
 {
-    this->m;
+   return this->m;
 }
 
-lista Hash::create(int m)
+void Hash::CriandoChavesAleatorios(int Vetor[], int n)
 {
-    lista *tabela = new lista();
-    return *tabela;
+    srand(time(NULL));
+    for(int i = 0; i< n; i++){
+        Vetor[i] = rand() % 100;
+    }
+}
+
+
+int Hash::hashFunction(int chave, int m)
+{
+    return chave % m;
+}
+
+
+void Hash::create(int m)
+{
+    No *auxInsere;
+    auxInsere = new No();
+    int Chaves[m], Data[m];
+
+    for(int i = 0; i < m; i++)
+    {
+      cout << "oi" << endl;
+      lista *l = new lista();
+      tabela.push_back(l);
+    }/*
+    for(int i = 0; i < m; i ++)
+    {
+      CriandoChavesAleatorios(Data, m);
+      int chave = this->hashFunction(Data[i], m);
+      *auxInsere = this->insere(chave, Data[i]);
+      cout << DIVISAO << endl;
+    }*/
+
 }
 
 No Hash::insere(int chave, int data)
 {
-
-    int indice = hashFunction(chave, m);
-    if(tabela[indice]->busca(data))
+    if(tabela[chave]->busca(data))
     {
         numColisoes++;
-        return *tabela[indice]->get(indice).getProx();
+        return *tabela[chave]->get(chave).getProx();
     }
-
-    tabela[indice]->set(indice, data);
-    return *tabela[indice]->get(indice).getProx();
+    tabela[chave]->set(chave, data);
+    return *tabela[chave]->get(chave).getProx();
 }
 
-No Hash::lookup(int chave, int data)
+No Hash::lookup(int indice, int data)
 {
-    int indice = hashFunction(chave, m);
-
     for (int i = 0; i < m; i++)
     {
         if (tabela[i]->get(indice).getInfo() == data)

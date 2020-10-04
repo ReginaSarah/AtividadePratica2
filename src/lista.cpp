@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstdlib>
-#include "lista.h"
+#include "../include/lista.h"
 
 
 using namespace std;
@@ -24,6 +24,8 @@ lista::~lista()
         p = t;
     }
 }
+
+
 
 bool lista::busca(int val)
 {

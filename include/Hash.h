@@ -1,8 +1,11 @@
-#ifndef HASH_H
-#define HASH_H
+#ifndef HASH_H_INCLUDED
+#define HASH_H_INCLUDED
 
 #include "No.h"
 #include "lista.h"
+#include <vector>
+
+using namespace std;
 
 //#include "Multiplicacao.h"
 
@@ -10,21 +13,23 @@ class Hash
 {
     public:
         Hash(int tamanho);
-        virtual ~Hash();
-        virtual int hashFunction(int chave, int m) = 0;
+        ~Hash();
+        int hashFunction(int chave, int m);
         int getTamanho();
 
-        lista create(int m);
+        void CriandoChavesAleatorios(int Vetor[], int n);
 
+        void create(int m);
+        
         No insere(int chave, int data);
-        No lookup(int chave, int data);
+        No lookup(int indice, int data);
         void destroy();
 
         int numColisoes = 0;
 
     private:
         int m;
-        lista *tabela[];
+        vector<lista*> tabela;
 };
 
 #endif // HASH_H

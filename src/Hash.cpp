@@ -16,6 +16,11 @@ Hash::Hash(int tamanho)
 {
     //ctor
     this->m = tamanho;
+    this->tabela[tamanho];
+    for(int i = 0; i < tamanho; i++)
+    {
+        this->tabela[i] = new lista();
+    }
 
 }
 
@@ -29,23 +34,24 @@ int Hash::getTamanho()
     this->m;
 }
 
-void Hash::create(int m)
+lista Hash::create(int m)
 {
-    lista tabela[m];
+    lista *tabela = new lista();
+    return *tabela;
 }
 
 No Hash::insere(int chave, int data)
 {
 
     int indice = hashFunction(chave, m);
-    if(tabela[indice].busca(data))
+    if(tabela[indice]->busca(data))
     {
         numColisoes++;
-        return *tabela[indice].get(indice).getProx();
+        return *tabela[indice]->get(indice).getProx();
     }
 
-    tabela[indice].set(indice, data);
-    return *tabela[indice].get(indice).getProx();
+    tabela[indice]->set(indice, data);
+    return *tabela[indice]->get(indice).getProx();
 }
 
 No Hash::lookup(int chave, int data)
@@ -54,10 +60,10 @@ No Hash::lookup(int chave, int data)
 
     for (int i = 0; i < m; i++)
     {
-        if (tabela[i].get(indice).getInfo() == data)
-            return *tabela[i].get(indice).getProx();
+        if (tabela[i]->get(indice).getInfo() == data)
+            return *tabela[i]->get(indice).getProx();
     }
-    return *tabela[indice].get(indice).getProx();
+    return *tabela[indice]->get(indice).getProx();
 }
 
 void Hash::destroy()

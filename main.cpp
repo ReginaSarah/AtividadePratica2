@@ -1,6 +1,7 @@
 #include <iostream>
 #include "time.h"
 #include "Hash.h"
+#include "lista.h"
 #include "Divisao.h"
 #include "Multiplicacao.h"
 using namespace std;
@@ -24,9 +25,9 @@ void imprime(int Vetor[], int n)
 
 int main(int arc, char* argv[])
 {
-	int tam = 5;
+	int tam = 2;
 	Divisao *tabelaDiv;
-	tabelaDiv->create(tam);
+	lista tabela[tam] = tabelaDiv->create(tam);
 
     No auxInsere;
     for(int i = 0; i < tam; i++)
@@ -41,5 +42,7 @@ int main(int arc, char* argv[])
         auxInsere = tabelaDiv->insere(Chaves[i], Data[i]);
         cout << tabelaDiv->numColisoes << endl;
     }
+
+    tabela[tam].~lista();
 
 }

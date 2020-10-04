@@ -36,7 +36,7 @@
 	"Hash.h"
 	"Divisao.h"
 
-1601681499 c:\users\rsara\onedrive\documentos\ap2\atividadepratica2\include\hash.h
+1601820215 c:\users\rsara\onedrive\documentos\ap2\atividadepratica2\include\hash.h
 	"No.h"
 	"lista.h"
 
@@ -47,7 +47,7 @@
 
 1601677580 c:\users\rsara\onedrive\documentos\ap2\atividadepratica2\include\divisao.h
 
-1601681849 source:c:\users\rsara\onedrive\documentos\ap2\atividadepratica2\src\hash.cpp
+1601820385 source:c:\users\rsara\onedrive\documentos\ap2\atividadepratica2\src\hash.cpp
 	<iostream>
 	"Hash.h"
 	"Hash.h"
@@ -66,10 +66,11 @@
 
 1601677642 c:\users\rsara\onedrive\documentos\ap2\atividadepratica2\include\multiplicacao.h
 
-1601681343 source:c:\users\rsara\onedrive\documentos\ap2\atividadepratica2\main.cpp
+1601820324 source:c:\users\rsara\onedrive\documentos\ap2\atividadepratica2\main.cpp
 	<iostream>
 	"time.h"
 	"Hash.h"
+	"lista.h"
 	"Divisao.h"
 	"Multiplicacao.h"
 

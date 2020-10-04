@@ -14,7 +14,7 @@ class Hash
         virtual int hashFunction(int chave, int m) = 0;
         int getTamanho();
 
-        void create(int m);
+        lista create(int m);
 
         No insere(int chave, int data);
         No lookup(int chave, int data);
@@ -23,8 +23,8 @@ class Hash
         int numColisoes = 0;
 
     private:
-        lista tabela[];
         int m;
+        lista *tabela[];
 };
 
 #endif // HASH_H

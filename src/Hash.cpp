@@ -112,7 +112,8 @@ void Hash::create(int m, int n, int tipoHash, int Data[])
         *auxInsere = this->insere(chave, Data[i]);
       }
       Colisoes();
-      this->imprime();
+      cout << "Colisões: " <<numColisoes << endl;
+      //this->imprime();
       cout << endl;
     
 }
@@ -174,5 +175,4 @@ void Hash::imprime()
     }
     cout << endl;
   } 
-  cout << "Colisões: " <<numColisoes << endl;
 }

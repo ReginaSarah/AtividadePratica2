@@ -23,8 +23,8 @@ void CriandoChavesAleatorios(int Vetor[], int n)
 
 int main(int arc, char* argv[])
 {
-  int n = 50;
-  int m, m1 = 32, m2 = 43, m3 = 50, m4 = 100;
+  int n = 1010;
+  int m, m1 = 997, m2 = 1010, m3 = 512, m4 = 2000;
   int Data[n];
 
   CriandoChavesAleatorios(Data, n);

@@ -22,7 +22,7 @@ class Hash
 
         void CriandoChavesAleatorios(int Vetor[], int n);
 
-        void create(int m, int tipoHash);
+        void create(int m, int n, int tipoHash, int Data[]);
         void Colisoes();
         No insere(int chave, int data);
         No lookup(int indice, int data);

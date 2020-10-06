@@ -7,7 +7,7 @@ using namespace std;
 
 lista::lista()
 {
-    cout << "Criando objeto listaaEncad" << endl;
+    //cout << "Criando objeto listaaEncad" << endl;
     primeiro = NULL;
     ultimo = NULL;
     n = 0;
@@ -15,7 +15,7 @@ lista::lista()
 
 lista::~lista()
 {
-    cout << "Destruindo objeto ListaEncad" << endl;
+    //cout << "Destruindo objeto ListaEncad" << endl;
     No *p = primeiro;
     while(p != NULL)
     {
@@ -138,7 +138,7 @@ void lista::insereFinal(int val)
     if(ultimo != NULL) 
     {
       ultimo->setProx(p);
-      cout << "Inseriu certo" << endl;
+      //cout << "Inseriu certo" << endl;
     }
     ultimo = p;
 

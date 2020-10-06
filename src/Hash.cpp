@@ -93,27 +93,28 @@ int Hash::hashFunction(int m, int data, int tipoHash)
   }
 }
 
-void Hash::create(int m, int tipoHash)
+void Hash::create(int m, int n, int tipoHash, int Data[])
 {
     No *auxInsere;
     auxInsere = new No();
-    int Chaves[m], Data[m];
-
+    //int Data[m];
     for(int i = 0; i < m; i++)
     {
       lista *l = new lista();
       tabela.push_back(l);
     }
-    CriandoChavesAleatorios(Data, m);
-    for(int i = 0; i < m; i ++)
-    {
-      cout << "Data: " << Data[i] << endl;
-      int chave = this->hashFunction(m, Data[i], tipoHash);
-      cout << "Chave: " << chave << endl;
-      *auxInsere = this->insere(chave, Data[i]);
-    }
-    Colisoes();
-    this->imprime();
+
+      for(int i = 0; i < n; i ++)
+      {
+        //cout << "Data: " << Data[i] << endl;
+        int chave = this->hashFunction(m, Data[i], tipoHash);
+        //cout << "Chave: " << chave << endl;
+        *auxInsere = this->insere(chave, Data[i]);
+      }
+      Colisoes();
+      this->imprime();
+      cout << endl;
+    
 }
 
 

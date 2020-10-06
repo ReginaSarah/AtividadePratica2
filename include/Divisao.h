@@ -1,11 +1,10 @@
 #ifndef DIVISAO_H
 #define DIVISAO_H
 
-class Divisao
+class Divisao: public Hash
 {
     public:
-
-        //int hashFunction(int chave, int m);
+        int hashFunction(int chave, int m);
 
     protected:
 

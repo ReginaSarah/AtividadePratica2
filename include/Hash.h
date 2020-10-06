@@ -14,17 +14,20 @@ class Hash
     public:
         Hash(int tamanho);
         ~Hash();
-        int hashFunction(int chave, int m);
+        int hashFunctionDivisao(int chave, int m);
+        int hashFunctionMultiplicacao(int chave, int m);
+        int hashFunctionOctal(int chave, int m);
+        int hashFunction(int m, int data, int tipoHash);
         int getTamanho();
 
         void CriandoChavesAleatorios(int Vetor[], int n);
 
-        void create(int m);
-        
+        void create(int m, int tipoHash);
+        void Colisoes();
         No insere(int chave, int data);
         No lookup(int indice, int data);
         void destroy();
-
+        void imprime();
         int numColisoes = 0;
 
     private:

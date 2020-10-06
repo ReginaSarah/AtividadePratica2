@@ -7,23 +7,18 @@
 #include <vector>
 using namespace std;
 
-void imprime(int Vetor[], int n)
-{
-    cout << "Vetor" << endl;
-    for(int i = 0; i < n; i++)
-    {
-        cout << Vetor[i] << endl;
-    }
-    cout << endl;
-}
+#define DIVISAO 0
+#define MULTIPLICACAO 1
+#define RAIZ 2
 
 int main(int arc, char* argv[])
 {
 	int tam = 2;
-  
-  Hash *tabelaDiv;
-  
-  tabelaDiv->create(tam);
 
+  Hash *tabelaDiv = new Hash(tam);
+  
+  tabelaDiv->create(tam, DIVISAO);
+
+  tabelaDiv->destroy();
 
 }

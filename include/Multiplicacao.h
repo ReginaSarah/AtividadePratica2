@@ -2,10 +2,12 @@
 #define MULTIPLICACAO_H
 
 
-class Multiplicacao
+class Multiplicacao: public Hash
 {
     public:
-        //int hashFunction(int chave, int m);
+      //Multiplicacao();
+      //~Multiplicacao();
+        int hashFunction(int chave, int m);
 
     protected:
 

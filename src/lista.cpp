@@ -25,6 +25,25 @@ lista::~lista()
     }
 }
 
+No lista::getPrimeiro()
+{
+  return *primeiro;
+}
+
+No lista::getUltimo()
+{
+  return *ultimo;
+}
+
+void lista::setPrimeiro(No* p)
+{
+  primeiro = p;
+}
+
+void lista::setUltimo(No* p)
+{
+  ultimo = p;
+}
 
 
 bool lista::busca(int val)
@@ -36,37 +55,65 @@ bool lista::busca(int val)
     return false;
 }
 
+/*No lista::getAnterior(int data)
+{
+  No *p = primeiro;
+  No *aux;
+  int i = 0;
+  while(i < k)
+  {
+      i++;
+      aux = p->getProx();
+      p = p->getProx();
+  }
+  if(p == NULL)
+  {
+      cout << "O ERRO: Indice invalido!" << endl;
+  }
+  else
+      return *aux;
+}*/
+
+int lista:: getSize()
+{
+  return this->n;
+}
+
 No lista::get(int k)
 {
     No *p = primeiro;
+    No *aux;
     int i = 0;
-    while(i < k && p != NULL)
+    while(i < k && p->getProx() != NULL)
     {
         i++;
         p = p->getProx();
     }
     if(p == NULL)
     {
-        cout << "ERRO: Indice invalido!" << endl;
-        //exit(1);
+        cout << "O ERRO: Indice invalido!" << endl;
     }
     else
         return *p;
 }
 
-void lista::set(int k, int val)
+void lista::set(int val)
 {
     No *p = primeiro;
     int i = 0;
-    while(i < k && p != NULL)
+    while(i < this->getSize() && p != NULL)
     {
         i++;
+        this->setUltimo(p);
         p = p->getProx();
     }
     if(p == NULL)
         cout << "ERRO: Indice invalido!" << endl;
     else
-        p->setInfo(val);
+    {
+      p->setInfo(val);
+    }
+        
 }
 
 
@@ -88,7 +135,11 @@ void lista::insereFinal(int val)
     p->setInfo(val);
     p->setProx(NULL);
 
-    if(ultimo != NULL) ultimo->setProx(p);
+    if(ultimo != NULL) 
+    {
+      ultimo->setProx(p);
+      cout << "Inseriu certo" << endl;
+    }
     ultimo = p;
 
     n++;

@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1602523628 source:c:\users\rsara\onedrive\documentos\atpratica3\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<math.h>
+	<utility>
+	<tuple>
+	<iomanip>
+	<stdlib.h>
+	"time.h"
+	"include/Hash.h"
+	<vector>
+
+1602523637 c:\users\rsara\onedrive\documentos\atpratica3\include\hash.h
+	<vector>
+

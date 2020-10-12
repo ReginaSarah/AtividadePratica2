@@ -1,46 +1,114 @@
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <math.h>
+#include <utility>
+#include <tuple>
+#include <iomanip>
+#include <stdlib.h>
 #include "time.h"
 #include "include/Hash.h"
-#include "include/lista.h"
-#include "include/Divisao.h"
-#include "include/Multiplicacao.h"
+//#include "include/lista.h"
+//#include "include/Divisao.h"
+//#include "include/Multiplicacao.h"
 #include <vector>
-using namespace std;
 
-#define DIVISAO 0
-#define MULTIPLICACAO 1
-#define RAIZ 2
+using namespace std;
 
 void CriandoChavesAleatorios(int Vetor[], int n)
 {
     srand(time(NULL));
     cout << "VETOR DE DADOS" << endl;
-    for(int i = 0; i< n; i++){
+    for(int i = 0; i< n; i++)
+    {
         Vetor[i] = rand() % 1000;
         cout << Vetor[i] << endl;
     }
 }
 
+void Imprime(vector<int> Data, int n)
+{
+  for(int i = 0; i < n; i++)
+    {
+      cout << Data[i] << endl;
+    }
+}
+
+void Leitura(int* n, int* m, int* tipoHash, vector<int>* Data, int argv)
+{
+    ifstream entrada;
+    //entrada.open(argv, ios::in);
+
+    if(entrada.is_open())
+    {
+        string num;
+        getline(entrada, num, ' ');
+        *m = std::stoi(num);
+        getline(entrada, num, ' ');
+        *n = std::stoi(num);
+        getline(entrada, num);
+        *tipoHash = std::stoi(num);
+        while(!entrada.eof())
+        {
+            string n;
+            getline(entrada, n);
+            //cout << n << endl;
+            int a = stoi(n);
+            Data->push_back(a);
+        }
+        entrada.close();
+    }
+    else
+        cout << "Que pena, não consegui abrir o arquivo!" << endl;
+
+}
+
 int main(int arc, char* argv[])
 {
-  int n = 1010;
-  int m, m1 = 997, m2 = 1010, m3 = 512, m4 = 2000;
-  int Data[n];
+  int n, m, tipoHash;
+  vector<int> Data;
 
-  CriandoChavesAleatorios(Data, n);
-
-  for(int i = 0; i < 4; i++)
-  {
-    if(i == 0) m = m1;
-    else if(i == 1) m = m2;
-    else if(i == 2) m = m3;
-    else if(i == 3) m = m4;
-    cout << endl << "m = " << m << endl;
-    Hash *tabelaDiv = new Hash(m);
-    //tabelaDiv->create(m, n, DIVISAO, Data);
-    //tabelaDiv->create(m, n, MULTIPLICACAO, Data);
-    tabelaDiv->create(m, n, RAIZ, Data);
-    tabelaDiv->destroy();
+  if (arc != 2) {
+    cout << "ERRO: Necessario os parametros: ./<program_name> <input_file>" << endl;
+    return 1;
   }
+
+  string program_name(argv[0]);
+  string input_file_name(argv[1]);
+
+  ifstream entrada;
+  entrada.open(argv[1], ios::in);
+
+    if(entrada.is_open())
+    {
+        string num;
+        getline(entrada, num, ' ');
+        m = std::stoi(num);
+        getline(entrada, num, ' ');
+        n = std::stoi(num);
+        getline(entrada, num);
+        tipoHash = std::stoi(num);
+        while(!entrada.eof())
+        {
+            string n;
+            getline(entrada, n);
+            int a = stoi(n);
+            Data.push_back(a);
+        }
+        entrada.close();
+    }
+    else
+        cout << "Que pena, não consegui abrir o arquivo!" << endl;
+
+    //Leitura(&n, &m, &tipoHash, &Data, argv[1]);
+
+     int mm = m - 1;
+    cout << endl << "m = " << m << endl;
+    cout << endl << "n = " << n << endl;
+    cout << endl << "Hash = " << tipoHash << endl;
+
+    Hash *tabelaEncad = new Hash(m);
+    tabelaEncad->create(m, mm, n, tipoHash, Data);
+    tabelaEncad->destroy();
 
 }

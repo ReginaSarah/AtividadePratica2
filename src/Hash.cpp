@@ -2,13 +2,11 @@
 #include <time.h>
 #include "../include/Hash.h"
 #include <math.h>
-#include "../include/lista.h"
+//#include "../include/lista.h"
 
 using namespace std;
 
-#define DIVISAO 0
-#define MULTIPLICACAO 1
-#define RAIZ 2
+#define INFINITO -1
 
 Hash::Hash(int tamanho)
 {
@@ -26,153 +24,114 @@ int Hash::getTamanho()
    return this->m;
 }
 
-void Hash::CriandoChavesAleatorios(int Vetor[], int n)
+bool Hash::Cheia(int m)
 {
-    srand(time(NULL));
-    for(int i = 0; i< n; i++){
-        Vetor[i] = rand() % 100;
-    }
-}
-
-
-int Hash::hashFunctionDivisao(int chave, int m)
-{
-    return chave % m;
-}
-
-int Hash::hashFunctionMultiplicacao(int chave, int m)
-{
-    float A, aux, num;
-    int inteiro, key;
-
-    A = (sqrt(5)-1) / 2;
-
-    modf(chave*A, &num);
-    num = (chave*A) - num;
-    aux = m*num;
-    modf(aux, &num);
-    
-    return num;
-}
-
-int Hash::hashFunctionOctal(int chave, int m) {
-    int i = 1;
-    int a;
-    int octal = 0; 
-
-    if(chave <= 7) {
-        octal = chave;
-    }
-    else{
-        while(chave >= 8) {
-            a = chave % 8;
-            chave = chave / 8;
-            octal = octal + a * i; //calculo do octal
-            i *= 10; 
-        }
-        chave = chave % 8;
-        octal = octal + chave * i; //mesmo calculo aqui
-    }
-
-    return octal % m;
-}
-
-int Hash::hashFunction(int m, int data, int tipoHash)
-{
-  switch (tipoHash)
+  int cont = 0;
+  for(int i = 0; i < m; i++)
   {
-    case DIVISAO:
-      return hashFunctionDivisao(data, m);
+    if(tabela[i] != INFINITO)
+    {
+      cont++;
+    }
+  }
+  if(cont == m) return true;
+  return false;
+}
+
+
+int Hash::hashFunction(int m, int mm, int *i, int data, int tipoHash)
+{
+  switch(tipoHash)
+  {
+    case LINEAR:
+      return SondagemLinear(data, m, i);
       break;
-    case MULTIPLICACAO:
-      return hashFunctionMultiplicacao(data, m);
-      break;
-    case RAIZ:
-      return hashFunctionOctal(data, m);
+    case DUPLA:
+      return SondagemDupla(data, m, mm, i);
       break;
   }
 }
 
-void Hash::create(int m, int n, int tipoHash, int Data[])
+int Hash::SondagemLinear(int chave, int m, int* i)
 {
-    No *auxInsere;
-    auxInsere = new No();
-    //int Data[m];
+  return (chave + *i) % m;
+}
+
+int Hash::auxSondagemDupla(int chave, int m)
+{
+  return chave % m;
+}
+
+int Hash::SondagemDupla(int chave, int m, int mm, int* i)
+{
+  int h1 = auxSondagemDupla(chave, m);
+  int h2 = 1 + auxSondagemDupla(chave, mm);
+  return (h1 + *i*h2) % m;
+}
+
+void Hash::create(int m, int mm, int n, int tipoHash, vector<int> Data)
+{
+    int auxInsere;
+
     for(int i = 0; i < m; i++)
     {
-      lista *l = new lista();
-      tabela.push_back(l);
+      tabela.push_back(INFINITO);
     }
 
-      for(int i = 0; i < n; i ++)
-      {
-        //cout << "Data: " << Data[i] << endl;
-        int chave = this->hashFunction(m, Data[i], tipoHash);
-        //cout << "Chave: " << chave << endl;
-        *auxInsere = this->insere(chave, Data[i]);
-      }
-      Colisoes();
-      cout << "Colisões: " <<numColisoes << endl;
-      //this->imprime();
-      cout << endl;
-    
-}
-
-
-
-No Hash::insere(int chave, int data)
-{
-    if(tabela[chave]->busca(data))
+    for(int i = 0; i < n; i ++)
     {
-        //numColisoes++;
-        return tabela[chave]->get(chave);
+      int cont = 0;
+      for(int j = 0; j < m; j++)
+      {
+        int chave = this->hashFunction(m, mm, &cont, Data[i], tipoHash);
+        if(tabela[chave] != INFINITO)
+        {
+            numColisoes++;
+            cont++;
+        }
+        else
+        {
+          auxInsere = this->insere(chave, Data[i]);
+          break;
+        }
+      }
+      if(this->Cheia(m)) break;
     }
-    
-    tabela[chave]->insereFinal(data);
-    //No *p = new No();
-    //p = tabela[chave]->getUltimo().getProx();
-    //tabela[chave]->setUltimo(p);
-    return tabela[chave]->get(chave);
+    cout << "Colisoes: " << numColisoes << endl;
+    //this->imprime();
+    cout << endl;
+
 }
 
-No Hash::lookup(int indice, int data)
+int Hash::insere(int chave, int data)
+{
+    tabela[chave] = data;
+    return tabela[chave];
+}
+
+int Hash::lookup(int indice, int data)
 {
     for (int i = 0; i < m; i++)
     {
-        if (tabela[i]->get(indice).getInfo() == data)
-            return *tabela[i]->get(indice).getProx();
+        if (tabela[i] == data)
+            return tabela[i];
     }
-    return *tabela[indice]->get(indice).getProx();
+    return INFINITO;
 }
 
 void Hash::destroy()
 {
     for(int i = 0; i < m; i++)
     {
-        tabela[i]->~lista();
+        tabela[i] = INFINITO;
     }
-}
-
-void Hash::Colisoes()
-{
-  for(int i = 0; i < this->m; i++)
-  {
-    int n = tabela[i]->getSize();
-    if(n >= 2)
-    {
-      numColisoes = numColisoes + n - 1;
-    }
-  }  
 }
 
 void Hash::imprime()
 {
   for(int i = 0; i < m; i++)
   {
-    for(int j = tabela[i]->getSize() - 1; j >= 0; j--)
-    {
-      cout << tabela[i]->get(j).getInfo() << " - ";
-    }
-    cout << endl;
-  } 
+    cout << tabela[i] << " - ";
+  }
+  cout << endl;
 }

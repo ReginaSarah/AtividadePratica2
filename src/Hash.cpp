@@ -2,11 +2,8 @@
 #include <time.h>
 #include "../include/Hash.h"
 #include <math.h>
-//#include "../include/lista.h"
 
 using namespace std;
-
-#define INFINITO -1
 
 Hash::Hash(int tamanho)
 {
@@ -95,7 +92,7 @@ void Hash::create(int m, int mm, int n, int tipoHash, vector<int> Data)
           break;
         }
       }
-      if(this->Cheia(m)) break;
+      //if(this->Cheia(m)) break;
     }
     cout << "Colisoes: " << numColisoes << endl;
     //this->imprime();

@@ -1,8 +1,6 @@
 #ifndef HASH_H_INCLUDED
 #define HASH_H_INCLUDED
 
-//#include "No.h"
-//#include "lista.h"
 #include <vector>
 
 using namespace std;
@@ -10,7 +8,6 @@ using namespace std;
 #define LINEAR 0
 #define DUPLA 1
 #define INFINITO -1
-//#include "Multiplicacao.h"
 
 class Hash
 {
